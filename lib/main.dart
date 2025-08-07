@@ -1,11 +1,25 @@
+import 'package:app4_receitas/di/service_locator.dart';
 import 'package:app4_receitas/routes/app_router.dart';
 import 'package:app4_receitas/utils/theme/custom_theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import 'utils/config/env.dart';
 
 Future<void> main() async {
   // Garante que o Flutter está inicializado
   WidgetsFlutterBinding.ensureInitialized();
+
+
+//Carregar váriaveis de ambiente
+  await Env.init ();
+
+  //inicializando o Supabase
+  await Supabase.initialize(url: Env.supabaseUrl , anonKey: Env.supabaseAnnonKey);
+
+  // Inicializando as dependencias.
+  await setupDependencies();
 
   runApp(const MainApp());
 }

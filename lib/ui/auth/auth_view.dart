@@ -41,7 +41,7 @@ class _AuthViewState extends State<AuthView> {
                       _buildAvatarUrlField(),
                     ],
                     const SizedBox(height: 32),
-                    _buildSubmitButton(context),
+                    _buildSubmitButton(),
                     const SizedBox(height: 32),
                     _buildToggleModeButton(),
                   ],
@@ -170,7 +170,7 @@ class _AuthViewState extends State<AuthView> {
     );
   }
 
-  Widget _buildSubmitButton(BuildContext context) {
+  Widget _buildSubmitButton() {
     return SizedBox(
       height: 50,
       child: ElevatedButton(

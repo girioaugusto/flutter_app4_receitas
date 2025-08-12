@@ -1,7 +1,11 @@
+import 'package:app4_receitas/data/repositories/auth_repository.dart';
+import 'package:app4_receitas/di/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthViewModel extends GetxController {
+  final _repository = getIt<AuthRepository>();
+
   // Form
   final formKey = GlobalKey<FormState>();
 
@@ -16,11 +20,13 @@ class AuthViewModel extends GetxController {
   final _obscurePassword = true.obs;
   final _isSubmitting = false.obs;
   final _isLoginMode = true.obs;
+  final _errorMessage = ''.obs;
 
   // Getters
   bool get obscurePassword => _obscurePassword.value;
   bool get isSubmitting => _isSubmitting.value;
   bool get isLoginMode => _isLoginMode.value;
+  String get errorMessage => _errorMessage.value;
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) return 'Informe o e-mail';
@@ -72,9 +78,30 @@ class AuthViewModel extends GetxController {
   Future<void> submit() async {
     final valid = formKey.currentState?.validate() ?? false;
     if (!valid) return;
-
-    // TODO: Implementar a lógica de autenticação real aqui
     _isSubmitting.value = true;
+    if (isLoginMode) {
+      await login();
+    } else {
+      await register();
+    }
+  }
+
+  Future<void> login() async {
+    final response = await _repository.signInWithPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    response.fold((left) {
+      _errorMessage.value = left.message;
+      print(errorMessage);
+    }, (right) {
+      print(right);
+      return;
+    });
+  }
+
+  Future<void> register() async {
+    // TODO: lógica para registro
   }
 
   @override

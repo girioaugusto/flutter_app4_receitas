@@ -38,7 +38,7 @@ class _ProfileViewState extends State<ProfileView> {
               Text(viewModel.errorMessage),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {await viewModel.singOut();},
                 child: const Text('SAIR'),
               ),
             ],
@@ -81,7 +81,7 @@ class _ProfileViewState extends State<ProfileView> {
             const SizedBox(height: 8),
             Text(user?.email?? ''),
             const SizedBox(height: 24),
-            SizedBox(height: 50, width: double.infinity, child: ElevatedButton.icon(onPressed: () {}, label: Text('SAIR', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),), icon: const Icon(Icons.exit_to_app_rounded),
+            SizedBox(height: 50, width: double.infinity, child: ElevatedButton.icon(onPressed: () async {await viewModel.singOut();}, label: Text('SAIR', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),), icon: const Icon(Icons.exit_to_app_rounded),
             style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(12)), backgroundColor: Theme.of(context).colorScheme.primary, foregroundColor: Theme.of(context).colorScheme.onPrimary ),),)
           ],
         ),

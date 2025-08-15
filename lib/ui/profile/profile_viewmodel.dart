@@ -22,5 +22,10 @@ class ProfileViewModel extends GetxController {
     _isLoading.value = false;
   }
 
-  //TODO: logout
+  Future<void> singOut() async{
+    _isLoading.value = true;
+    final result = await _repository.singOut();
+    result.fold((left) => _errorMessage.value = left.message, (right) => {});
+    _isLoading.value = false;
+  }
 }

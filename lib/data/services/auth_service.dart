@@ -9,6 +9,9 @@ class AuthService {
   // Retorna o usuário atual
   User? get currentUser => _supabaseClient.auth.currentUser;
 
+  //Stream para ouvir mundanças na autenticação
+  Stream<AuthState> get authStateChanges => _supabaseClient.auth.onAuthStateChange;
+
   // Sign in com email e password
   Future<Either<AppError, AuthResponse>> signInWithPassword({
     required String email,

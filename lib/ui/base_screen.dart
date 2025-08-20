@@ -1,5 +1,4 @@
 import 'package:app4_receitas/ui/widgets/custom_bnb.dart';
-import 'package:app4_receitas/ui/widgets/custom_drawer.dart';
 import 'package:app4_receitas/utils/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

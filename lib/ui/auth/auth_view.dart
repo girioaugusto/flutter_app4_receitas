@@ -24,14 +24,14 @@ class _AuthViewState extends State<AuthView> with SingleTickerProviderStateMixin
     _animationController = AnimationController(
       vsync:  this,
       duration: const Duration(milliseconds: 1000),
-    )
-    ..addStatusListener((listener){
-      if(listener == AnimationStatus.completed) {
-        _animationController.reverse();
-      } else if (listener == AnimationStatus.dismissed) {
-        _animationController.forward();
-      }
-    });
+    );
+    // ..addStatusListener((listener){
+    //   if(listener == AnimationStatus.completed) {
+    //     _animationController.reverse();
+    //   } else if (listener == AnimationStatus.dismissed) {
+    //     _animationController.forward();
+    //   }
+    // });
 
     _animation = Tween(begin:  50.0, end: 200.0).animate(_animationController);
     _animation.addListener(() => setState(() {}));

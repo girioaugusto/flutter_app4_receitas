@@ -114,7 +114,7 @@ class AuthViewModel extends GetxController {
       print(errorMessage);
       }, (right)  {
         _errorMessage.value =
-         'E-mail de confiormação enviado. Verifique sua caixa de entrada';
+         'E-mail de confirmação enviado. Verifique sua caixa de entrada';
         _isLoginMode.value = true;
         _clearFields();
       },

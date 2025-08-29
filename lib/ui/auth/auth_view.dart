@@ -187,6 +187,7 @@ class _AuthViewState extends State<AuthView> with SingleTickerProviderStateMixin
 
   Widget _buildConfirmPasswordField() {
     return TextFormField(
+      key: ValueKey('confirmPasswordField'),
       controller: viewModel.confirmPasswordController,
       obscureText: viewModel.obscurePassword,
       textInputAction: TextInputAction.done,
@@ -210,6 +211,7 @@ class _AuthViewState extends State<AuthView> with SingleTickerProviderStateMixin
 
   Widget _buildUsernameField() {
     return TextFormField(
+      key: ValueKey('usernameField'),
       controller: viewModel.usernameController,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -224,6 +226,7 @@ class _AuthViewState extends State<AuthView> with SingleTickerProviderStateMixin
 
   Widget _buildAvatarUrlField() {
     return TextFormField(
+      key: ValueKey('avatarUrlField'),
       controller: viewModel.avatarUrlController,
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -287,6 +290,7 @@ class _AuthViewState extends State<AuthView> with SingleTickerProviderStateMixin
           viewModel.isLoginMode ? 'Não tem uma conta? ' : 'Já tem uma conta? ',
         ),
         TextButton(
+          key: ValueKey('toggleButton'),
           onPressed: viewModel.isSubmitting ? null : viewModel.toggleMode,
           child: Text(
             viewModel.isLoginMode ? 'Cadastre-se' : 'Entre aqui',

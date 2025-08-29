@@ -43,6 +43,6 @@ class UserProfile {
 
   @override
   String toString() {
-    return 'UserProfile(username: $username)';
+    return 'UserProfile(id: $id, email: $email, username: $username, avatarUrl: $avatarUrl)';
   }
 }
